@@ -19,7 +19,7 @@ resource "null_resource" "db_prov" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/install-db.sh",
-      "sudo -E /tmp/install-db.sh ${google_compute_instance.app.network_interface.0.access_config.0.nat_ip} ${google_compute_instance.db.network_interface.0.network_ip}",
+      "sudo -E /tmp/install-db.sh ${google_compute_instance.app.network_interface.0.network_ip}",
     ]
   }
 }
@@ -45,7 +45,7 @@ resource "null_resource" "app_prov" {
   provisioner "remote-exec" {
    inline = [
       "chmod +x /tmp/install-app.sh",
-      "sudo -E /tmp/install-app.sh ${google_compute_instance.app.network_interface.0.network_ip}",
+      "sudo -E /tmp/install-app.sh ${google_compute_instance.app.network_interface.0.access_config.0.nat_ip} ${google_compute_instance.db.network_interface.0.network_ip}",
     ]
   }
 }

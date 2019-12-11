@@ -3,7 +3,7 @@ sleep 120
 rootdbpass="yarkopaswd55";
 # WEB host from web connect to db
 host_web="$1";
-#hostdb="$2";
+hostdb="$2";
 portdb=3306;
 dbname="moodle";
 moodleuser="webmoodle";
